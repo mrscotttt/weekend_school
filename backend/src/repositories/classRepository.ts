@@ -33,7 +33,7 @@ export const findUpcomingClassesForStudent = async (studentId: string): Promise<
        COUNT(DISTINCT seat_bt.booking_id) AS seat_current,
        bt.attendance_status,
        CASE
-         WHEN ch.compens_id IS NOT NULL THEN TRUE
+         WHEN MAX(ch.compens_id) IS NOT NULL THEN TRUE
          ELSE FALSE
        END AS has_skipped_before
      FROM class c
@@ -51,8 +51,7 @@ export const findUpcomingClassesForStudent = async (studentId: string): Promise<
        c.name,
        c.class_date,
        c.seat_total,
-       bt.attendance_status,
-       ch.compens_id`,
+       bt.attendance_status`,
     [studentId],
   );
   return rows as ClassRow[];
