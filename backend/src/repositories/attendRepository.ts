@@ -26,13 +26,14 @@ export const insertCreditTransaction = async (
   transactionId: string,
   studentId: string,
   bookingId: string,
+  classId: string,
   creditAmount: number,
   remark: string,
 ): Promise<void> => {
   await conn.execute<ResultSetHeader>(
-    `INSERT INTO credit_transaction (transaction_id, student_id, booking_id, credit_amount, remark, created_at)
-     VALUES (?, ?, ?, ?, ?, NOW())`,
-    [transactionId, studentId, bookingId, creditAmount, remark],
+    `INSERT INTO credit_transaction (transaction_id, student_id, booking_id, class_id, credit_amount, remark, created_at)
+     VALUES (?, ?, ?, ?, ?, ?, NOW())`,
+    [transactionId, studentId, bookingId, classId, creditAmount, remark],
   );
 };
 

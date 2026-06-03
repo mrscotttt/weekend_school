@@ -34,7 +34,7 @@ export const recordAttend = async (studentId: string, classId: string): Promise<
 
     await updateBookingStatusToAttend(conn, booking.booking_id);
 
-    await insertCreditTransaction(conn, uuidv4(), studentId, booking.booking_id, -1, 'ATTEND');
+    await insertCreditTransaction(conn, uuidv4(), studentId, booking.booking_id, classId, -1, 'ATTEND');
 
     const compensation = await findPendingMakeupCompensation(conn, studentId);
     if (compensation) {
