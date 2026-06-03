@@ -1,11 +1,9 @@
 import { Request, Response } from 'express';
 import { getAllStudents } from '../services/studentService';
+import { asyncHandler } from '../middleware/asyncHandler';
+import { sendSuccess } from '../lib/response';
 
-export const getStudents = async (req: Request, res: Response): Promise<void> => {
-  try {
-    const data = await getAllStudents();
-    res.json({ success: true, data });
-  } catch (error) {
-    res.status(500).json({ success: false, message: 'Internal server error' });
-  }
-};
+export const getStudents = asyncHandler(async (req: Request, res: Response): Promise<void> => {
+  const data = await getAllStudents();
+  sendSuccess(res, data);
+});
