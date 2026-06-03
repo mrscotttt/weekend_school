@@ -1,0 +1,16 @@
+node_modules/
+promp/
+CLAUDE.md
+CLAUDE.MD
+
+# Backend
+backend/.env
+backend/dist/
+
+# Frontend
+frontend/.next/
+frontend/.env.local
+frontend/.env
+
+# OS
+.DS_Store
