@@ -9,6 +9,8 @@ export enum BusinessCode {
   BOOKING_PACKAGE_NOT_FOUND = 606,
   BOOKING_PACKAGE_INACTIVE = 607,
   BOOKING_WINDOW_CLOSED = 608,
+  COURSE_COMPLETED = 609,
+  COURSE_FORFEITED = 610,
 
   // Skip
   SKIP_SUCCESS = 700,
@@ -49,6 +51,8 @@ export const BUSINESS_MESSAGE: Record<BusinessCode, string> = {
   [BusinessCode.BOOKING_PACKAGE_NOT_FOUND]: 'Package not found',
   [BusinessCode.BOOKING_PACKAGE_INACTIVE]: 'Package is inactive',
   [BusinessCode.BOOKING_WINDOW_CLOSED]: 'Booking window is closed',
+  [BusinessCode.COURSE_COMPLETED]: 'Course already completed',
+  [BusinessCode.COURSE_FORFEITED]: 'Course was forfeited',
 
   [BusinessCode.SKIP_SUCCESS]: 'Skip recorded successfully',
   [BusinessCode.SKIP_BOOKING_NOT_FOUND]: 'Booking not found',
