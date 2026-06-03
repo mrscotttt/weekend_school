@@ -4,6 +4,7 @@ import bookingRoutes from './bookingRoutes';
 import attendRoutes from './attendRoutes';
 import absentRoutes from './absentRoutes';
 import skipRoutes from './skipRoutes';
+import classRoutes from './classRoutes';
 
 const router = Router();
 
@@ -12,5 +13,6 @@ router.use('/bookings', bookingRoutes);
 router.use('/attend', attendRoutes);
 router.use('/absent', absentRoutes);
 router.use('/skip', skipRoutes);
+router.use('/classes', classRoutes);
 
 export default router;
