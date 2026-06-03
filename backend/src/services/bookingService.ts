@@ -43,8 +43,7 @@ export const createBooking = async (studentId: string, classId: string): Promise
         if (compensation?.compens_status === 'EXPIRED') {
           throw new BusinessError(BusinessCode.BOOKING_PACKAGE_EXPIRED);
         }
-        // PENDING — still counts as occupied
-        throw new BusinessError(BusinessCode.BOOKING_ALREADY_BOOKED);
+        // PENDING — still continue booking new course
       }
       // BOOKED
       throw new BusinessError(BusinessCode.BOOKING_ALREADY_BOOKED);
