@@ -29,6 +29,9 @@ export const createBooking = async (studentId: string, classId: string): Promise
     // 2-3. Check existing booking
     const existing = await findBookingByStudentAndClass(conn, studentId, classId);
     if (existing) {
+      if (existing.attendance_status === 'BOOKED') {
+        throw new BusinessError(BusinessCode.BOOKING_ALREADY_BOOKED);
+      }
       if (existing.attendance_status === 'ATTEND') {
         throw new BusinessError(BusinessCode.COURSE_COMPLETED);
       }
@@ -43,10 +46,7 @@ export const createBooking = async (studentId: string, classId: string): Promise
         if (compensation?.compens_status === 'EXPIRED') {
           throw new BusinessError(BusinessCode.BOOKING_PACKAGE_EXPIRED);
         }
-        // PENDING — still continue booking new course
       }
-      // BOOKED
-      throw new BusinessError(BusinessCode.BOOKING_ALREADY_BOOKED);
     }
 
     // 4. Validate seat
