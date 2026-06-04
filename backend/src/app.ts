@@ -3,6 +3,23 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import routes from './routes';
 import { errorHandler } from './middleware/errorHandler';
+import pool from './db/connection';
+
+async function testConnection() {
+  try {
+    const conn = await pool.getConnection();
+
+    const [rows] = await conn.query('SELECT NOW()');
+
+    console.log('DB Connected', rows);
+
+    conn.release();
+  } catch (err) {
+    console.error('DB Error', err);
+  }
+}
+
+testConnection();
 
 dotenv.config();
 
