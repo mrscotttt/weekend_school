@@ -1,5 +1,8 @@
 # Weekend School — Course Booking System
 
+# api doc
+- https://docs.google.com/document/d/119mU9hvzTyWBAWD4pUQiwTBAl5idI2J9kaJz1-9h694/edit?usp=sharing
+
 ## Setup
 
 ### Prerequisites
